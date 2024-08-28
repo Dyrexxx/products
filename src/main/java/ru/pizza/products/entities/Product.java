@@ -1,6 +1,5 @@
 package ru.pizza.products.entities;
 
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,7 +16,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
     @Column(name = "title")
-    protected String name;
+    protected String title;
 
     @Column(name = "description")
     private String description;
@@ -34,7 +33,7 @@ public class Product {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "product")
-    private List<Expenditure> ingredientList;
+    private List<Expenditure> expenditureList;
 
     @Transient
     private ImageProduct imageProduct;
