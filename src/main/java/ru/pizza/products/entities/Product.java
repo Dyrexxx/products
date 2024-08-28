@@ -33,10 +33,10 @@ public class Product {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "product")
-    private List<Expenditure> expenditureList;
+    private List<Expenditure> ingredientEntityList;
 
     @Transient
-    private ImageProduct imageProduct;
+    private ImageProduct imageModel;
 
     public enum Type {
         PIZZA, COFFEE;

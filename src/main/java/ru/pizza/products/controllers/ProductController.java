@@ -1,14 +1,9 @@
 package ru.pizza.products.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-import ru.pizza.products.dto.response.Basket;
 import ru.pizza.products.entities.Product;
 import ru.pizza.products.services.ProductService;
 import ru.pizza.products.utils.ImageUtil;
@@ -24,7 +19,8 @@ public class ProductController {
 
     @PostMapping(consumes = "application/json")
     public void newProduct(@RequestBody Product product) {
-        String urlImage = ImageUtil.createFile(product.getImageProduct());
+        System.out.println(product);
+        String urlImage = ImageUtil.createFile(product.getImageModel());
         product.setUrlImage(urlImage);
         productService.save(product);
     }
