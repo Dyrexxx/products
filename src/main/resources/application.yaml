@@ -1,0 +1,63 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: products
+  profiles:
+    active: dev
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    change-log: classpath:db/migrations/changeLog.xml
+  web:
+    resources:
+      static-locations:
+        - file:src/main/resources/static/
+        - classpath:/static/
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/products-dev
+    username: postgres
+    password: Dimik2001.
+  sql:
+    init:
+      mode: always
+      data-locations:
+        - classpath:/db/scripts/data/import_product-type_data.sql
+        - classpath:/db/scripts/data/import_ingredient_data.sql
+
+eureka:
+  instance:
+    hostname: localhost
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/products
+    username: postgres
+    password: Dimik2001.
+eureka:
+  instance:
+    hostname: eureka

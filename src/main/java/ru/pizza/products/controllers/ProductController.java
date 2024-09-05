@@ -19,7 +19,6 @@ public class ProductController {
 
     @PostMapping(consumes = "application/json")
     public void newProduct(@RequestBody Product product) {
-        System.out.println(product);
         String urlImage = ImageUtil.createFile(product.getImageModel());
         product.setUrlImage(urlImage);
         productService.save(product);
