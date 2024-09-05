@@ -12,11 +12,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   liquibase:
     change-log: classpath:db/migrations/changeLog.xml
-  web:
-    resources:
-      static-locations:
-        - file:src/main/resources/static/
-        - classpath:/static/
+
 
 eureka:
   instance:
@@ -41,8 +37,9 @@ spring:
     init:
       mode: always
       data-locations:
-        - classpath:/db/scripts/data/import_expenditure_data.sql
+        - classpath:/db/scripts/data/import_1_clear_shema.sql
         - classpath:/db/scripts/data/import_product_data.sql
+        - classpath:/db/scripts/data/import_expenditure_data.sql
 
 eureka:
   instance:
