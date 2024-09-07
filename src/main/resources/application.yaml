@@ -16,6 +16,7 @@ spring:
 
 eureka:
   instance:
+    hostname: localhost
     prefer-ip-address: true
   client:
     service-url:
@@ -41,9 +42,6 @@ spring:
         - classpath:/db/scripts/data/import_product_data.sql
         - classpath:/db/scripts/data/import_expenditure_data.sql
 
-eureka:
-  instance:
-    hostname: localhost
 
 ---
 spring:
@@ -55,6 +53,3 @@ spring:
     url: jdbc:postgresql://localhost:5432/products
     username: postgres
     password: Dimik2001.
-eureka:
-  instance:
-    hostname: eureka
